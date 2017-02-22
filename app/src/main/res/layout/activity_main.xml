@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.marko.managingofgate.MainActivity"
+    android:orientation="horizontal">
+
+    <Spinner
+        android:id="@+id/object_name_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/open_gate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/object_name_spinner"
+        android:textAllCaps="false"
+        android:layout_marginTop="5dp"
+        android:text="Open Gate"/>
+
+    <Button
+        android:id="@+id/close_gate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/open_gate"
+        android:textAllCaps="false"
+        android:layout_marginTop="5dp"
+        android:text="Close Gate" />
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/close_gate"-->
+        <!--android:text="Hello World!" />-->
+
+</RelativeLayout>

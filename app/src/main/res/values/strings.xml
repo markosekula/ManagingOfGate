@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ManagingOfGate</string>
+
+    <string name="ok">OK</string>
+    <string name="you_need_to_permission">You need to allow access to the permission otherwise your app will not work with all capabilities</string>
+    <string name="never_ask_again">You must manually turn on permission, otherwise you can not send sms</string>
+
+
+</resources>
