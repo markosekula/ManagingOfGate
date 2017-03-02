@@ -31,10 +31,15 @@
         android:layout_marginTop="5dp"
         android:text="Close Gate" />
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/close_gate"-->
-        <!--android:text="Hello World!" />-->
+    <TextView
+        android:id="@+id/databaseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/close_gate"
+        android:text="Hello World!"
+        android:textSize="20sp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="100dp"/>
 
 </RelativeLayout>

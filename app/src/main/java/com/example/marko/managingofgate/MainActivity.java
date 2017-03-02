@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import static android.Manifest.permission.SEND_SMS;
@@ -36,11 +37,16 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     String gate;
 
+    TextView databaseName;
+    DataDB data = new DataDB();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+
+        databaseName = (TextView)findViewById(R.id.databaseName);
 
         objectNameSpinner = (Spinner) findViewById(R.id.object_name_spinner);
         objectNameSpinner.setOnItemSelectedListener(new CustomOnGateObjectSelectedListener());
@@ -96,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        databaseName.setText(data.getNameDB(this));
+
     }
 
     private void putGateList() {
@@ -159,10 +169,10 @@ public class MainActivity extends AppCompatActivity {
             Log.v("GATE_OBJECT", "number: SEND_SMS: " + phoneNumber + ", name: " + nameObject);
             if (isClicked) {
                 gate = "open gate";
-                callSMSManager();
+               // callSMSManager();
             } else {
                 gate = "close gate";
-                callSMSManager();
+                //callSMSManager();
             }
         }
     }
