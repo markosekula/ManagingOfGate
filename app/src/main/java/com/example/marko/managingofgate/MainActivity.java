@@ -2,6 +2,7 @@ package com.example.marko.managingofgate;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -12,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     Button openGate;
     private Button closeGate;
     Context context;
-    private ArrayList<GateObject> listGateObject = new ArrayList<>();
+    ArrayList<GateObject> listGateObject = new ArrayList<>();
     private String nameObject;
     private String phoneNumber;
     private boolean isOpenGate = false;
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         openGate = (Button) findViewById(R.id.open_gate);
         closeGate = (Button) findViewById(R.id.close_gate);
 
-        putGateList();
+        getGateList();
 
         openGate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,27 +106,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         databaseName.setText(data.getNameDB(this));
 
     }
 
-    private void putGateList() {
-        GateObject object1 = new GateObject("-Select your object-", null);
-        GateObject object2 = new GateObject("Family house", "0643376043");
-        GateObject object3 = new GateObject("Apartment", "0641137975");
-        GateObject object4 = new GateObject("Local", "0640644294");
+    private void getGateList() {
+            listGateObject =  data.getExistObject(this);
 
-        listGateObject.add(object1);
-        listGateObject.add(object2);
-        listGateObject.add(object3);
-        listGateObject.add(object4);
+            if (listGateObject != null) {
+                for (GateObject gb : listGateObject) {
+//                    Log.d("arrayObject" , "nameObject: " +  gb.getNameObject());
+//                    Log.d("arrayObject" , "isIsFill: " +  gb.isIsFill());
+                }
 
-        if (listGateObject.size() == 4) {
-            ArrayAdapter<GateObject> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, listGateObject);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            objectNameSpinner.setAdapter(adapter);
-        }
+                GateObject object = new GateObject();
+                object.setNameObject("-Select your object-");
+                listGateObject.add(0, object);
+
+                ArrayAdapter<GateObject> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, listGateObject);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                objectNameSpinner.setAdapter(adapter);
+            }
     }
 
     public class CustomOnGateObjectSelectedListener implements AdapterView.OnItemSelectedListener {
@@ -169,10 +172,10 @@ public class MainActivity extends AppCompatActivity {
             Log.v("GATE_OBJECT", "number: SEND_SMS: " + phoneNumber + ", name: " + nameObject);
             if (isClicked) {
                 gate = "open gate";
-               // callSMSManager();
+                callSMSManager();
             } else {
                 gate = "close gate";
-                //callSMSManager();
+                callSMSManager();
             }
         }
     }
@@ -240,6 +243,31 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(getResources().getString(R.string.ok), okListener)
                 .create()
                 .show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.set_button) {
+            goToSetBuildingActivity();
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
+
+    private void goToSetBuildingActivity() {
+        Intent intent = new Intent(MainActivity.this, SetBuildingActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

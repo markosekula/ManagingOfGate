@@ -9,11 +9,6 @@ public class GateObject {
 
     public GateObject () {}
 
-    public GateObject (String nameObject, String phoneNumber) {
-        this.nameObject = nameObject;
-        this.phoneNumber = phoneNumber;
-    }
-
     public void setNameObject(String nameObject) {this.nameObject = nameObject;}
     public String getNameObject() {return nameObject;}
 
