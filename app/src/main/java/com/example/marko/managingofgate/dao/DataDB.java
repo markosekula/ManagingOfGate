@@ -1,8 +1,12 @@
-package com.example.marko.managingofgate;
+package com.example.marko.managingofgate.dao;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.example.marko.managingofgate.model.GateObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -143,7 +147,7 @@ public class DataDB {
         }
     }
 
-    public void updateObject (Context context, String nameObject, String phone, Integer id) {
+    public void updateObject (Context context, String nameObject, String phone, int id) {
         databaseHelper = new DatabaseHelper(context);
 
         try {
@@ -152,26 +156,37 @@ public class DataDB {
             e.printStackTrace();
         }
 
+        if (databaseHelper.checkDataBase()) {
+            databaseHelper.openDataBase();
+            SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+            String  sql = "UPDATE gate_object  SET " + " nameObject = '" + nameObject + "'," +
+                    " " + "  phoneNumber = '" + phone + "', " + "  isFill = 'true'" + "  WHERE id = " + id;
+
+            db.execSQL(sql);
+            db.close();
+        }
+    }
+
+    public void deleteObject(Context context, String nameObject, String phone, int id) {
+        databaseHelper = new DatabaseHelper(context);
+
+        try {
+            databaseHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (databaseHelper.checkDataBase()) {
             databaseHelper.openDataBase();
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-            String query = "UPDATE gate_object SET nameObject = '"+ nameObject +"', phoneNumber = '"+ phone +"', isFill = 'true' WHERE id = "+ id +" ";
-            Cursor cursor = db.rawQuery(query, null);
+            String  sql = "UPDATE gate_object  SET " + " nameObject = '" + nameObject + "'," +
+                    " " + "  phoneNumber = '" + phone + "', " + "  isFill = 'false'" + "  WHERE id = " + id;
 
-
-            String  sql = "UPDATE gate_object  SET " + " nameObject = '" + nameObject + "', " + "  phoneNumber = '"
-                    + phone + "', " + "  isFill = '"
-                     + nameObject + "'" + "  WHERE id = "
-                    + id;
-
-
-            cursor.close();
+            db.execSQL(sql);
             db.close();
-
         }
-
 
     }
 

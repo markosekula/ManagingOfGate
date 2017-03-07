@@ -5,6 +5,14 @@
     <string name="you_need_to_permission">You need to allow access to the permission otherwise your app will not work with all capabilities</string>
     <string name="never_ask_again">You must manually turn on permission, otherwise you can not send sms</string>
 
+    <string name="open_gate">Open gate</string>
+    <string name="close_gate">Close gate</string>
     <string name="set_building">Set building</string>
+
+    <string name="object_title">Object number&#160;</string>
+    <string name="set_object">Type name object</string>
+    <string name="set_number">Type phone number</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
 
 </resources>

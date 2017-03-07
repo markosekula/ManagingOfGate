@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SetOneObjectActivity">
+
+    <EditText
+        android:id="@+id/set_one_object"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/set_object"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/set_number"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:hint="@string/set_number"
+        android:layout_below="@id/set_one_object"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/edit_object"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/set_number"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:text="@string/save"/>
+
+    <Button
+        android:id="@+id/delete_object"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/edit_object"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:text="@string/delete"/>
+
+</RelativeLayout>

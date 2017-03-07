@@ -1,4 +1,4 @@
-package com.example.marko.managingofgate;
+package com.example.marko.managingofgate.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,6 +22,11 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.marko.managingofgate.model.GateObject;
+import com.example.marko.managingofgate.R;
+import com.example.marko.managingofgate.dao.DataDB;
+
 import java.util.ArrayList;
 import static android.Manifest.permission.SEND_SMS;
 

@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.marko.managingofgate.MainActivity"
+    tools:context=".activity.MainActivity"
     android:orientation="horizontal">
 
     <Spinner
@@ -20,7 +20,7 @@
         android:layout_below="@+id/object_name_spinner"
         android:textAllCaps="false"
         android:layout_marginTop="5dp"
-        android:text="Open Gate"/>
+        android:text="@string/open_gate"/>
 
     <Button
         android:id="@+id/close_gate"
@@ -29,7 +29,7 @@
         android:layout_below="@id/open_gate"
         android:textAllCaps="false"
         android:layout_marginTop="5dp"
-        android:text="Close Gate" />
+        android:text="@string/close_gate" />
 
     <TextView
         android:id="@+id/databaseName"

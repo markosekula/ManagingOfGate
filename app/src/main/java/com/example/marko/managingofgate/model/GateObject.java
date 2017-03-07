@@ -1,4 +1,4 @@
-package com.example.marko.managingofgate;
+package com.example.marko.managingofgate.model;
 
 public class GateObject {
 

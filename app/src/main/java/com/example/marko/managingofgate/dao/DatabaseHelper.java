@@ -1,4 +1,4 @@
-package com.example.marko.managingofgate;
+package com.example.marko.managingofgate.dao;
 
 import android.content.Context;
 import android.database.SQLException;
