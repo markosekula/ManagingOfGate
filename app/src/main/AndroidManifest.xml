@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask"
@@ -25,15 +26,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.SetBuildingActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.SetOneObjectActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.AddBuildingActivity"></activity>
+
+        <activity android:name=".activity.AddBuildingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
