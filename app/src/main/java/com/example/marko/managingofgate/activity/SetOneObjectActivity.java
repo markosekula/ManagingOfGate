@@ -15,10 +15,10 @@ public class SetOneObjectActivity extends AppCompatActivity {
     EditText edObject;
     EditText edPhoneNumber;
     Button update;
+    Button reset;
     Button delete;
     DataDB data = new DataDB();
     Context context;
-
     String object_set;
     String phone_set;
     int id;
@@ -43,12 +43,20 @@ public class SetOneObjectActivity extends AppCompatActivity {
         edPhoneNumber.setText(phone);
 
         update = (Button) findViewById(R.id.edit_object);
+        reset = (Button) findViewById(R.id.reset_object);
         delete = (Button) findViewById(R.id.delete_object);
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveData();
+            }
+        });
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetData();
             }
         });
 
@@ -66,20 +74,28 @@ public class SetOneObjectActivity extends AppCompatActivity {
 
         if (object_set.length() > 0 && phone_set.length() > 0) {
             data.updateObject(context, object_set, phone_set, id);
-            Toast.makeText(context, "Successfully updated data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getResources().getString(R.string.updated_object), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "You need to fill fields object and phone number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getResources().getString(R.string.fill_fields), Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void deleteData() {
+    private void resetData() {
         String object = "";
         String phone = "";
         edObject.setText("");
         edPhoneNumber.setText("");
 
-        data.deleteObject(context, object, phone, id);
-        Toast.makeText(context, "Our object is deleted", Toast.LENGTH_SHORT).show();
+        data.resetObject(context, object, phone, id);
+        Toast.makeText(context, getResources().getString(R.string.reset_object), Toast.LENGTH_SHORT).show();
+    }
+
+    private void deleteData() {
+        edObject.setText("");
+        edPhoneNumber.setText("");
+
+        data.deleteObject(context, id);
+        Toast.makeText(context, getResources().getString(R.string.deleted_object), Toast.LENGTH_SHORT).show();
     }
 
 }

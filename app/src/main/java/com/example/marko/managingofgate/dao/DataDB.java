@@ -3,10 +3,7 @@ package com.example.marko.managingofgate.dao;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import com.example.marko.managingofgate.model.GateObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -28,9 +25,7 @@ public class DataDB {
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
             String query =  " SELECT nameObject FROM gate_object";
-
             Cursor cursor = db.rawQuery(query, null);
-            System.out.println("cursor: " + cursor.getCount());
 
             while(cursor.moveToNext()){
                 name = cursor.getString(0);
@@ -39,8 +34,6 @@ public class DataDB {
             cursor.close();
             databaseHelper.close();
 
-
-            System.out.println("name: " + name);
             return name;
 
         } else {
@@ -164,11 +157,12 @@ public class DataDB {
                     " " + "  phoneNumber = '" + phone + "', " + "  isFill = 'true'" + "  WHERE id = " + id;
 
             db.execSQL(sql);
+
             db.close();
         }
     }
 
-    public void deleteObject(Context context, String nameObject, String phone, int id) {
+    public void resetObject(Context context, String nameObject, String phone, int id) {
         databaseHelper = new DatabaseHelper(context);
 
         try {
@@ -185,9 +179,54 @@ public class DataDB {
                     " " + "  phoneNumber = '" + phone + "', " + "  isFill = 'false'" + "  WHERE id = " + id;
 
             db.execSQL(sql);
+
             db.close();
         }
+    }
 
+    public void addObject(Context context, String nameObject, String phone) {
+        databaseHelper = new DatabaseHelper(context);
+
+        try {
+            databaseHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (databaseHelper.checkDataBase()) {
+            databaseHelper.openDataBase();
+            SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+            String  sql;
+
+            sql = "INSERT INTO gate_object " + "( nameObject, " + "  phoneNumber, " + "  isFill) " + "  " +
+                    "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  'false')";
+
+            db.execSQL(sql);
+
+            db.close();
+        }
+    }
+
+    public void deleteObject(Context context, int id) {
+        databaseHelper = new DatabaseHelper(context);
+
+        try {
+            databaseHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (databaseHelper.checkDataBase()) {
+            databaseHelper.openDataBase();
+            SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
+            String sql;
+            sql = "DELETE FROM gate_object WHERE id = " + id;
+            db.execSQL(sql);
+
+            db.close();
+        }
     }
 
 }

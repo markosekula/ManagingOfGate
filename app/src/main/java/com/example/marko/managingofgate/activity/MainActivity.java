@@ -22,7 +22,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.marko.managingofgate.model.GateObject;
 import com.example.marko.managingofgate.R;
 import com.example.marko.managingofgate.dao.DataDB;
@@ -119,11 +118,6 @@ public class MainActivity extends AppCompatActivity {
             listGateObject =  data.getExistObject(this);
 
             if (listGateObject != null) {
-                for (GateObject gb : listGateObject) {
-//                    Log.d("arrayObject" , "nameObject: " +  gb.getNameObject());
-//                    Log.d("arrayObject" , "isIsFill: " +  gb.isIsFill());
-                }
-
                 GateObject object = new GateObject();
                 object.setNameObject("-Select your object-");
                 listGateObject.add(0, object);
@@ -265,12 +259,22 @@ public class MainActivity extends AppCompatActivity {
             goToSetBuildingActivity();
         }
 
+        if (id == R.id.add_button) {
+           goToAddBuildingActivity();
+        }
+
         return super.onOptionsItemSelected(item);
 
     }
 
     private void goToSetBuildingActivity() {
         Intent intent = new Intent(MainActivity.this, SetBuildingActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void goToAddBuildingActivity() {
+        Intent intent = new Intent(MainActivity.this, AddBuildingActivity.class);
         startActivity(intent);
         finish();
     }

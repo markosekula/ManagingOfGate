@@ -15,24 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.SetBuildingActivity"
+        <activity
+            android:name=".activity.SetBuildingActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".activity.SetOneObjectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SetOneObjectActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.AddBuildingActivity"></activity>
     </application>
 
 </manifest>
