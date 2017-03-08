@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataDB {
-    DatabaseHelper databaseHelper;
-    String name;
+    private DatabaseHelper databaseHelper;
+    private String name;
 
     public String getNameDB (Context context) {
         databaseHelper = new DatabaseHelper(context);
