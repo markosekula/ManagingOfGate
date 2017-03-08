@@ -101,9 +101,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (oldVersion < DB_VERSION) {
 
-            String ALTER_TABLE1 = "ALTER TABLE gate_object ADD COLUMN numberObject int";
+            String ALTER_TABLE = "ALTER TABLE gate_object ADD COLUMN numberObject int";
 
-            sqLiteDatabase.execSQL(ALTER_TABLE1);
+            sqLiteDatabase.execSQL(ALTER_TABLE);
         }
     }
 
