@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     closeGate.setEnabled(true);
 
                 }  else {
-                    Toast.makeText(context,"You need to choose your object", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "You need to choose your object", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
-    public class CustomOnGateObjectSelectedListener implements AdapterView.OnItemSelectedListener {
+    private class CustomOnGateObjectSelectedListener implements AdapterView.OnItemSelectedListener {
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             GateObject gateObject = (GateObject) parent.getItemAtPosition(pos);
 

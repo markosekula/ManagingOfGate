@@ -7,6 +7,8 @@ public class GateObject {
     private String phoneNumber;
     private boolean isFill;
 
+    private int numberObject;
+
     public GateObject () {}
 
     public void setNameObject(String nameObject) {this.nameObject = nameObject;}
@@ -20,6 +22,9 @@ public class GateObject {
 
     public void setIsFill(boolean isFill) {this.isFill = isFill;}
     public boolean isIsFill() {return isFill;}
+
+    public void setNumberObject(int numberObject) {this.numberObject = numberObject;}
+    public int getNumberObject() {return numberObject;}
 
     @Override
     public String toString() {

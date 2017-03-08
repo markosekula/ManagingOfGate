@@ -13,8 +13,8 @@ import com.example.marko.managingofgate.activity.SetOneObjectActivity;
 import java.util.ArrayList;
 
 public class SetBuildingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    ArrayList<GateObject> gateObjects = new ArrayList<>();
-    Context mContext;
+    private ArrayList<GateObject> gateObjects = new ArrayList<>();
+    private Context mContext;
 
     public SetBuildingAdapter (Context context) {
         this.mContext = context;
@@ -69,10 +69,10 @@ public class SetBuildingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return gateObjects.size();
     }
 
-    public class MyGateHolder extends RecyclerView.ViewHolder {
-        public TextView titleObject;
+    private class MyGateHolder extends RecyclerView.ViewHolder {
+        private TextView titleObject;
 
-        public MyGateHolder(View view) {
+        private MyGateHolder(View view) {
             super(view);
             titleObject = (TextView) view.findViewById(R.id.title_object);
         }

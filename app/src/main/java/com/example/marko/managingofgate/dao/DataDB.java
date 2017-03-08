@@ -24,7 +24,7 @@ public class DataDB {
             databaseHelper.openDataBase();
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-            String query =  " SELECT nameObject FROM gate_object";
+            String query =  " SELECT numberObject FROM gate_object";
             Cursor cursor = db.rawQuery(query, null);
 
             while(cursor.moveToNext()){
@@ -106,7 +106,8 @@ public class DataDB {
             databaseHelper.openDataBase();
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-            String query =  " SELECT id, nameObject, phoneNumber, isFill FROM gate_object";
+            //add new column numberObject
+            String query =  " SELECT id, nameObject, phoneNumber, isFill, numberObject FROM gate_object";
 
             Cursor cursor = db.rawQuery(query, null);
 
@@ -122,6 +123,9 @@ public class DataDB {
 
                 boolean value = Boolean.parseBoolean(cursor.getString(3));
                 gateObject.setIsFill(value);
+
+                //add and set new column numberObject
+                gateObject.setNumberObject(cursor.getInt(4));
 
                 arrayObject.add(gateObject);
 
@@ -202,7 +206,12 @@ public class DataDB {
             sql = "INSERT INTO gate_object " + "( nameObject, " + "  phoneNumber, " + "  isFill) " + "  " +
                     "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  'false')";
 
-            db.execSQL(sql);
+            //made new query for new added column - numberObject
+            String isFalse = "false";
+            String sql_new_column = "INSERT INTO gate_object " + "( nameObject, " + "  phoneNumber, " + " isFill, " + " numberObject) " + "  " +
+                    "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  '" + isFalse + "', " + " 10)";
+
+            db.execSQL(sql_new_column);
 
             db.close();
         }

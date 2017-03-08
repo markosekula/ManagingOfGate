@@ -12,18 +12,19 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-
     private Context mContext;
     private static String DB_PATH;
     private static final String DB_NAME = "gate.db";
     private SQLiteDatabase myDataBase;
+    private final static int DB_VERSION = 2;
 
     public DatabaseHelper(Context context) {
-        super(context, DB_NAME, null, 1);
+        super(context, DB_NAME, null, DB_VERSION);
         this.mContext = context;
 
         DB_PATH = context.getFilesDir().getParentFile().getPath() + "/databases/";
         System.out.println("DB_PATH: " + DB_PATH);
+
     }
 
     public void createDataBase () throws IOException {
@@ -90,12 +91,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        Log.d("DATABASE" , "onCreate");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        Log.d("DATABASE" , "oldVersion: " + oldVersion);
+        Log.d("DATABASE" , "newVersion: " + newVersion);
 
+        if (oldVersion < DB_VERSION) {
+
+            String ALTER_TABLE1 = "ALTER TABLE gate_object ADD COLUMN numberObject int";
+
+            sqLiteDatabase.execSQL(ALTER_TABLE1);
+        }
     }
 
 }
