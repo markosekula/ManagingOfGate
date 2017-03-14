@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.marko.managingofgate.model.GateObject;
 import com.example.marko.managingofgate.R;
 import com.example.marko.managingofgate.dao.DataDB;
+
 import java.util.ArrayList;
 import static android.Manifest.permission.SEND_SMS;
 
@@ -277,5 +278,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }
