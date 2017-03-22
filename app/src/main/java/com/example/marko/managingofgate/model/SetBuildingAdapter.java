@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,15 @@ public class SetBuildingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         int new_position = position + 1;
         String title = mContext.getResources().getString(R.string.object_title);
-        myGateHolder.titleObject.setText(title + new_position);
+
+        String nameOb = "";
+        if (nameObject.length() > 0) {
+            nameOb =  " - " + nameObject;
+
+            Log.d("MASTER" , "name: " + nameOb);
+        }
+
+        myGateHolder.titleObject.setText(title + new_position + nameOb);
 
         myGateHolder.titleObject.setOnClickListener(new View.OnClickListener() {
             @Override
