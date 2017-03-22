@@ -200,7 +200,7 @@ public class DataDB {
             String  sql;
 
             sql = "INSERT INTO gate_object " + "( nameObject, " + "  phoneNumber, " + "  isFill) " + "  " +
-                    "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  'false')";
+                    "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  'true')";
 
             db.execSQL(sql);
 

@@ -4,10 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import com.example.marko.managingofgate.R;
 import com.example.marko.managingofgate.activity.SetOneObjectActivity;
@@ -54,8 +54,6 @@ public class SetBuildingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         String nameOb = "";
         if (nameObject.length() > 0) {
             nameOb =  " - " + nameObject;
-
-            Log.d("MASTER" , "name: " + nameOb);
         }
 
         myGateHolder.titleObject.setText(title + new_position + nameOb);
@@ -63,6 +61,9 @@ public class SetBuildingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         myGateHolder.titleObject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final AlphaAnimation clicked = new AlphaAnimation(1F, 0.8F);
+                view.startAnimation(clicked);
+
                 Intent intent = new Intent(mContext, SetOneObjectActivity.class);
                 intent.putExtra("id_gate", id);
                 intent.putExtra("name_object", nameObject);

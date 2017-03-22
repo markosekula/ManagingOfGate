@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,9 +29,12 @@ public class AddBuildingActivity extends AppCompatActivity {
         edNewPhone = (EditText) findViewById(R.id.add_new_number);
         addObject = (Button) findViewById(R.id.add_new_object);
 
+        final AlphaAnimation buttonClicked = new AlphaAnimation(1F, 0.8F);
+
         addObject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClicked);
                 addNewObject();
             }
         });
@@ -43,6 +47,9 @@ public class AddBuildingActivity extends AppCompatActivity {
         if (building.length() > 0 && phone.length() > 0){
             data.addObject(this, building, phone);
             Toast.makeText(this, getResources().getString(R.string.add_object), Toast.LENGTH_SHORT).show();
+            edNewBuilding.setText("");
+            edNewPhone.setText("");
+            goToMainActivity();
         } else {
             Toast.makeText(this, getResources().getString(R.string.fill_fields), Toast.LENGTH_SHORT).show();
         }
@@ -51,6 +58,10 @@ public class AddBuildingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        goToMainActivity();
+    }
+
+    private void goToMainActivity() {
         Intent intent = new Intent(AddBuildingActivity.this , MainActivity.class);
         AddBuildingActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(intent);

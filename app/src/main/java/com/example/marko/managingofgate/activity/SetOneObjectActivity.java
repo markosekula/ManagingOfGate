@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -46,9 +47,12 @@ public class SetOneObjectActivity extends AppCompatActivity {
         reset = (Button) findViewById(R.id.reset_object);
         delete = (Button) findViewById(R.id.delete_object);
 
+        final AlphaAnimation buttonClicked = new AlphaAnimation(1F, 0.8F);
+
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClicked);
                 saveData();
             }
         });
@@ -56,6 +60,7 @@ public class SetOneObjectActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClicked);
                 resetData();
             }
         });
@@ -63,6 +68,7 @@ public class SetOneObjectActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.startAnimation(buttonClicked);
                 deleteData();
             }
         });
@@ -75,6 +81,7 @@ public class SetOneObjectActivity extends AppCompatActivity {
         if (object_set.length() > 0 && phone_set.length() > 0) {
             data.updateObject(context, object_set, phone_set, id);
             Toast.makeText(context, getResources().getString(R.string.updated_object), Toast.LENGTH_SHORT).show();
+            goToMainActivity();
         } else {
             Toast.makeText(context, getResources().getString(R.string.fill_fields), Toast.LENGTH_SHORT).show();
         }
@@ -88,6 +95,7 @@ public class SetOneObjectActivity extends AppCompatActivity {
 
         data.resetObject(context, object, phone, id);
         Toast.makeText(context, getResources().getString(R.string.reset_object), Toast.LENGTH_SHORT).show();
+        goToMainActivity();
     }
 
     private void deleteData() {
@@ -96,6 +104,13 @@ public class SetOneObjectActivity extends AppCompatActivity {
 
         data.deleteObject(context, id);
         Toast.makeText(context, getResources().getString(R.string.deleted_object), Toast.LENGTH_SHORT).show();
+        goToMainActivity();
+    }
+
+    private void goToMainActivity() {
+        Intent intent = new Intent(SetOneObjectActivity.this , MainActivity.class);
+        SetOneObjectActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        startActivity(intent);
     }
 
 }

@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        databaseName.setText(data.getNameDB(this));
+       // databaseName.setText(data.getNameDB(this));
 
     }
 
