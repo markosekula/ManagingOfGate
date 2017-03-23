@@ -1,4 +1,4 @@
-package com.example.marko.managingofgate;
+package com.example.marko.managingofgate.model;
 
 public class GateObject {
 
@@ -8,11 +8,6 @@ public class GateObject {
     private boolean isFill;
 
     public GateObject () {}
-
-    public GateObject (String nameObject, String phoneNumber) {
-        this.nameObject = nameObject;
-        this.phoneNumber = phoneNumber;
-    }
 
     public void setNameObject(String nameObject) {this.nameObject = nameObject;}
     public String getNameObject() {return nameObject;}

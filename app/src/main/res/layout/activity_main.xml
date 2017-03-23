@@ -4,8 +4,9 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.marko.managingofgate.MainActivity"
-    android:orientation="horizontal">
+    tools:context=".activity.MainActivity"
+    android:orientation="horizontal"
+    android:background="@color/white">
 
     <Spinner
         android:id="@+id/object_name_spinner"
@@ -16,27 +17,36 @@
     <Button
         android:id="@+id/open_gate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_below="@+id/object_name_spinner"
         android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_margin="2dp"
+        android:typeface="serif"
+        android:background="@color/grey"
+        android:textColor="@color/white"
         android:layout_marginTop="5dp"
-        android:text="Open Gate"/>
+        android:text="@string/open_gate"/>
 
     <Button
         android:id="@+id/close_gate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_below="@id/open_gate"
         android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_margin="2dp"
+        android:typeface="serif"
+        android:background="@color/grey"
+        android:textColor="@color/white"
         android:layout_marginTop="5dp"
-        android:text="Close Gate" />
+        android:text="@string/close_gate" />
 
     <TextView
         android:id="@+id/databaseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/close_gate"
-        android:text="Hello World!"
         android:textSize="20sp"
         android:layout_marginLeft="125dp"
         android:layout_marginStart="125dp"

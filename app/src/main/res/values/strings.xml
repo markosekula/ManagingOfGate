@@ -1,9 +1,32 @@
 <resources>
-    <string name="app_name">ManagingOfGate</string>
+    <string name="app_name">Managing Of Gate</string>
 
     <string name="ok">OK</string>
     <string name="you_need_to_permission">You need to allow access to the permission otherwise your app will not work with all capabilities</string>
     <string name="never_ask_again">You must manually turn on permission, otherwise you can not send sms</string>
 
+    <string name="open_gate">Open gate</string>
+    <string name="close_gate">Close gate</string>
+    <string name="set_building">Set building</string>
+    <string name="add_building">Add building</string>
+
+    <string name="object_title">Object number&#160;</string>
+    <string name="set_object">Type name object</string>
+    <string name="set_number">Type phone number</string>
+    <string name="save">Save</string>
+    <string name="reset">Reset</string>
+    <string name="delete">Delete</string>
+
+    <string name="no_buildings">No buildings to show</string>
+    <string name="fill_fields">You need to fill both fields</string>
+
+    <string name="add_object">Successfully added object</string>
+    <string name="updated_object">Successfully updated object</string>
+    <string name="deleted_object">Successfully deleted object</string>
+    <string name="reset_object">Our object is reset</string>
+
+    <string name="type_new_building">Type new building</string>
+    <string name="type_new_phone_number">Type new phone number</string>
+    <string name="add_new_object">Add new object</string>
 
 </resources>
