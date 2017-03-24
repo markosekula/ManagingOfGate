@@ -14,7 +14,7 @@
         android:layout_marginTop="5dp"/>
 
     <Button
-        android:id="@+id/open_gate"
+        android:id="@+id/openGate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/object_name_spinner"
@@ -23,10 +23,10 @@
         android:text="@string/open_gate"/>
 
     <Button
-        android:id="@+id/close_gate"
+        android:id="@+id/closeGate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/open_gate"
+        android:layout_below="@id/openGate"
         android:textAllCaps="false"
         android:layout_marginTop="5dp"
         android:text="@string/close_gate" />
@@ -35,7 +35,7 @@
         android:id="@+id/databaseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/close_gate"
+        android:layout_below="@id/closeGate"
         android:textSize="20sp"
         android:layout_marginLeft="125dp"
         android:layout_marginStart="125dp"

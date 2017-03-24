@@ -26,13 +26,18 @@ import com.example.marko.managingofgate.model.GateObject;
 import com.example.marko.managingofgate.R;
 import com.example.marko.managingofgate.dao.DataDB;
 
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+
 import java.util.ArrayList;
 import static android.Manifest.permission.SEND_SMS;
 
+@EActivity
 public class MainActivity extends AppCompatActivity {
     private Spinner objectNameSpinner;
-    Button openGate;
-    private Button closeGate;
+
+  //  Button openGate;
+   // private Button closeGate;
     Context context;
     ArrayList<GateObject> listGateObject = new ArrayList<>();
     private String nameObject;
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     String gate;
 
-    TextView databaseName;
+    //TextView databaseName;
     DataDB data = new DataDB();
 
     @Override
@@ -53,65 +58,75 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
 
-        databaseName = (TextView)findViewById(R.id.databaseName);
+      //  databaseName = (TextView)findViewById(R.id.databaseName);
 
         objectNameSpinner = (Spinner) findViewById(R.id.object_name_spinner);
         objectNameSpinner.setOnItemSelectedListener(new CustomOnGateObjectSelectedListener());
 
-        openGate = (Button) findViewById(R.id.open_gate);
-        closeGate = (Button) findViewById(R.id.close_gate);
+        //openGate = (Button) findViewById(R.id.open_gate);
+      //  closeGate = (Button) findViewById(R.id.close_gate);
 
         getGateList();
 
-        openGate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nameObject != null && phoneNumber != null) {
-                    selectedObject = nameObject;
-                    selectedPhone = phoneNumber;
-                    isClicked = true;
+//        openGate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
-                    if (checkPermission()){
-                        isOpenGate = true;
-                        sendSMSForOpenOrCloseGate();
-                    } else {
-                        isOpenGate = true;
-                        requestPermission();
-                    }
-                    openGate.setEnabled(false);
-                    closeGate.setEnabled(true);
+//        closeGate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//            }
+//        });
 
-                }  else {
-                    Toast.makeText(context, "You need to choose your object", Toast.LENGTH_SHORT).show();
-                }
+//        databaseName.setText(data.getNameDB(this));
+
+    }
+
+    @Click
+    public void openGate() {
+        if (nameObject != null && phoneNumber != null) {
+            selectedObject = nameObject;
+            selectedPhone = phoneNumber;
+            isClicked = true;
+
+            if (checkPermission()){
+                isOpenGate = true;
+                sendSMSForOpenOrCloseGate();
+            } else {
+                isOpenGate = true;
+                requestPermission();
             }
-        });
+            //openGate.setEnabled(false);
+           // closeGate.setEnabled(true);
 
-        closeGate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (nameObject != null && phoneNumber != null) {
-                    isClicked = false;
+        }  else {
+            Toast.makeText(context, "You need to choose your object", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-                    if (checkPermission()){
-                        isOpenGate = false;
-                        sendSMSForOpenOrCloseGate();
-                    } else {
-                        isOpenGate = false;
-                        requestPermission();
-                    }
+    @Click
+    public void closeGate () {
+        if (nameObject != null && phoneNumber != null) {
+            isClicked = false;
 
-                    openGate.setEnabled(true);
-                    closeGate.setEnabled(false);
-                }  else {
-                    Toast.makeText(context,"You need to choose your object", Toast.LENGTH_SHORT).show();
-                }
-
+            if (checkPermission()){
+                isOpenGate = false;
+                sendSMSForOpenOrCloseGate();
+            } else {
+                isOpenGate = false;
+                requestPermission();
             }
-        });
 
-        databaseName.setText(data.getNameDB(this));
-
+            //  openGate.setEnabled(true);
+           // closeGate.setEnabled(false);
+        }  else {
+            Toast.makeText(context,"You need to choose your object", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void getGateList() {
@@ -138,23 +153,23 @@ public class MainActivity extends AppCompatActivity {
 
             if (selectedObject != null && selectedPhone != null && nameObject != null && phoneNumber != null){
                 if (!nameObject.equals(selectedObject) && !phoneNumber.equals(selectedPhone)){
-                    openGate.setEnabled(true);
-                    closeGate.setEnabled(true);
+                   // openGate.setEnabled(true);
+             //       closeGate.setEnabled(true);
                 } else {
                     if (isOpenGate){
-                        openGate.setEnabled(false);
-                        closeGate.setEnabled(true);
+                     //   openGate.setEnabled(false);
+                    //    closeGate.setEnabled(true);
                     } else {
-                        openGate.setEnabled(true);
-                        closeGate.setEnabled(false);
+                       // openGate.setEnabled(true);
+                   //     closeGate.setEnabled(false);
                     }
                 }
             }
 
             if (nameObject != null) {
                 if (nameObject.equals("-Select your object-")){
-                    openGate.setEnabled(true);
-                    closeGate.setEnabled(true);
+                   // openGate.setEnabled(true);
+                  //  closeGate.setEnabled(true);
                 }
             }
 
@@ -268,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goToSetBuildingActivity() {
-        Intent intent = new Intent(MainActivity.this, SetBuildingActivity.class);
+        Intent intent = new Intent(MainActivity.this, SetBuildingActivity_.class);
         startActivity(intent);
         finish();
     }

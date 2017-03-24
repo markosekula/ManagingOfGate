@@ -12,15 +12,22 @@ import com.example.marko.managingofgate.model.GateObject;
 import com.example.marko.managingofgate.R;
 import com.example.marko.managingofgate.model.SetBuildingAdapter;
 import com.example.marko.managingofgate.dao.DataDB;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
 import java.util.ArrayList;
+import java.util.List;
 
+@EActivity
 public class SetBuildingActivity extends AppCompatActivity {
-    ArrayList<GateObject> gateObjects = new ArrayList<>();
+    List<GateObject> gateObjects = new ArrayList<>();
     DataDB data = new DataDB();
     RecyclerView recyclerViewGateObject;
-    private SetBuildingAdapter setBuildingAdapter;
+
     LinearLayoutManager linearLayoutManager;
     TextView msgObject;
+
+    @Bean
+    SetBuildingAdapter setBuildingAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +38,6 @@ public class SetBuildingActivity extends AppCompatActivity {
         msgObject = (TextView) findViewById(R.id.message_object);
         msgObject.setVisibility(View.GONE);
 
-        setBuildingAdapter = new SetBuildingAdapter(this);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerViewGateObject.setLayoutManager(linearLayoutManager);
         recyclerViewGateObject.setAdapter(setBuildingAdapter);
@@ -47,15 +53,15 @@ public class SetBuildingActivity extends AppCompatActivity {
                 Log.d("arrayObject", "nameObject: " + gb.getNameObject());
                 Log.d("arrayObject", "phoneNumber: " + gb.getPhoneNumber());
                 Log.d("arrayObject", "isIsFill: " + gb.isIsFill());
-                Log.d("arrayObject", "numberObject: " + gb.getNumberObject());
+              //  Log.d("arrayObject", "numberObject: " + gb.getNumberObject());
             }
 
-            setBuildingAdapter.setGateObjects(gateObjects);
+            setBuildingAdapter.setList(gateObjects);
         }
 
         if (gateObjects != null) {
             if (gateObjects.size() == 0){
-                setBuildingAdapter.clearGateObjects();
+                setBuildingAdapter.clearList();
                 msgObject.setVisibility(View.VISIBLE);
             }
         }
@@ -70,7 +76,7 @@ public class SetBuildingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(SetBuildingActivity.this , MainActivity.class);
+        Intent intent = new Intent(SetBuildingActivity.this , MainActivity_.class);
         SetBuildingActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(intent);
     }

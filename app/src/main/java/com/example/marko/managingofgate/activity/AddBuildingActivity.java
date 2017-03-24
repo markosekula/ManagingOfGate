@@ -51,7 +51,7 @@ public class AddBuildingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(AddBuildingActivity.this , MainActivity.class);
+        Intent intent = new Intent(AddBuildingActivity.this , MainActivity_.class);
         AddBuildingActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(intent);
     }

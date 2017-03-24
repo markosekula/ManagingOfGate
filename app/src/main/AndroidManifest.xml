@@ -17,7 +17,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.MainActivity_"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".activity.SetBuildingActivity"
+            android:name=".activity.SetBuildingActivity_"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 

@@ -107,7 +107,7 @@ public class DataDB {
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
             //add new column numberObject
-            String query =  " SELECT id, nameObject, phoneNumber, isFill, numberObject FROM gate_object";
+            String query =  " SELECT id, nameObject, phoneNumber, isFill FROM gate_object";
 
             Cursor cursor = db.rawQuery(query, null);
 
@@ -125,7 +125,7 @@ public class DataDB {
                 gateObject.setIsFill(value);
 
                 //add and set new column numberObject
-                gateObject.setNumberObject(cursor.getInt(4));
+                //gateObject.setNumberObject(cursor.getInt(4));
 
                 arrayObject.add(gateObject);
 
@@ -204,14 +204,14 @@ public class DataDB {
             String  sql;
 
             sql = "INSERT INTO gate_object " + "( nameObject, " + "  phoneNumber, " + "  isFill) " + "  " +
-                    "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  'false')";
+                    "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  'true')";
 
             //made new query for new added column - numberObject
             String isFalse = "false";
             String sql_new_column = "INSERT INTO gate_object " + "( nameObject, " + "  phoneNumber, " + " isFill, " + " numberObject) " + "  " +
                     "VALUES " + " ('" + nameObject + "', " + "  '" + phone + "', " + "  '" + isFalse + "', " + " 10)";
 
-            db.execSQL(sql_new_column);
+            db.execSQL(sql);
 
             db.close();
         }
