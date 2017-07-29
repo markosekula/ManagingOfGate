@@ -42,13 +42,6 @@ public class SetBuildingActivity extends AppCompatActivity {
 
         if (gateObjects != null && gateObjects.size() > 0) {
 
-            for (GateObject gb : gateObjects) {
-                Log.d("arrayObject", "id: " + gb.getId());
-                Log.d("arrayObject", "nameObject: " + gb.getNameObject());
-                Log.d("arrayObject", "phoneNumber: " + gb.getPhoneNumber());
-                Log.d("arrayObject", "isIsFill: " + gb.isIsFill());
-            }
-
             setBuildingAdapter.setGateObjects(gateObjects);
         }
 

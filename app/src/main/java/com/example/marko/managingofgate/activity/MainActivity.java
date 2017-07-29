@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     String gate;
 
-    TextView databaseName;
     DataDB data = new DataDB();
 
     @Override
@@ -51,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-
-        databaseName = (TextView)findViewById(R.id.databaseName);
 
         objectNameSpinner = (Spinner) findViewById(R.id.object_name_spinner);
         objectNameSpinner.setOnItemSelectedListener(new CustomOnGateObjectSelectedListener());
@@ -108,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-       // databaseName.setText(data.getNameDB(this));
-
     }
 
     private void getGateList() {
@@ -164,10 +158,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendSMSForOpenOrCloseGate() {
-        Log.v("GATE_OBJECT", "number: " + phoneNumber);
-        Log.v("GATE_OBJECT", "name: " + nameObject);
         if (nameObject != null && phoneNumber != null){
-            Log.v("GATE_OBJECT", "number: SEND_SMS: " + phoneNumber + ", name: " + nameObject);
             if (isClicked) {
                 gate = "open gate";
                 callSMSManager();

@@ -9,38 +9,6 @@ import java.util.ArrayList;
 
 public class DataDB {
     private DatabaseHelper databaseHelper;
-    private String name;
-
-    public String getNameDB (Context context) {
-        databaseHelper = new DatabaseHelper(context);
-
-        try {
-            databaseHelper.createDataBase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (databaseHelper.checkDataBase()){
-            databaseHelper.openDataBase();
-            SQLiteDatabase db = databaseHelper.getReadableDatabase();
-
-            String query =  " SELECT nameObject FROM gate_object";
-            Cursor cursor = db.rawQuery(query, null);
-
-            while(cursor.moveToNext()){
-                name = cursor.getString(0);
-            }
-
-            cursor.close();
-            databaseHelper.close();
-
-            return name;
-
-        } else {
-            return "ERROR";
-        }
-
-    }
 
     public ArrayList<GateObject> getExistObject (Context context) {
         databaseHelper = new DatabaseHelper(context);
